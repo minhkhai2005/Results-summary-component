@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="grid.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Results summary component</title>
+  <style>
+    body{
+      width: 100vw;
+      height: 100vh;
+    }
+    .content {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 0px;
+      position: relative;
+      border-radius: 30px;
+    }
+    /* result */
+    .result {
+      background: linear-gradient(hsl(252, 100%, 67%),hsl(241, 81%, 54%));
+      display: block;
+      width: 100%;
+      height: 50%;
+      border-radius: 0px 0px 30px 30px;
+    }
+    .title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: hsl(241, 100%, 89%);
+      font-size: 18px;
+      margin: 18px 0px 18px 0px;
+    }
+    .overall {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(hsla(256, 72%, 46%, 1),hsla(241, 72%, 46%, 0));
+      margin: auto auto;
+      float: unset;
+    }
+    .overall p {
+      width: fit-content;
+      font-size: 48px;
+      float: none;
+      margin: auto auto;
+      font-weight: 800;
+      color: white;
+      position: relative;
+      top: 12px;
+    }
+    .overall p::after {
+      content: "of 100";
+      font-size: 15px;
+      position: absolute;
+      top: 70px;
+      left: 15px;
+      color: hsl(241, 100%, 89%);
+      opacity: 0.4;
+      font-weight: 500;
+    }
+
+    .rate {
+      margin: 20px 0px 10px 0px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      font-weight: 500;
+      color: white;
+    }
+    .info {
+      text-align: center;
+      display: flex;
+      width: fit-content;
+      max-width: 70%;
+      margin: auto;
+      color: hsl(241, 100%, 89%);
+      font-weight: 500;
+      opacity: .8;
+    }
+    /* summary */
+    .summary {
+      padding: 10px 30px 20px 30px;
+      border-radius: 30px;
+    }
+    .summary-title, .reaction, .memory, .verbal, .visual, .summary button {
+      height: 50px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: space-between;
+      margin: 15px 0px;
+      text-align: center;
+    }
+    .summary-title{
+      margin-top: 0px;
+      color: hsl(224, 30%, 27%);
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .reaction, .memory, .verbal, .visual{
+      padding: 0px 20px 0px 20px;
+    }
+    .summary span:not(.score) {
+      color: inherit;
+      font-weight: 500;
+    }
+    .reaction{
+      background-color: rgba(255, 87, 87,0.1);
+      border-radius: 8px;
+      color: hsl(0, 100%, 67%);
+    }
+    .memory{
+      background-color: rgba(255, 176, 31,0.1);
+      border-radius: 8px;
+      color: hsl(39, 100%, 56%);
+    }
+    .verbal{
+      background-color: rgba(0, 189, 145,0.1);
+      border-radius: 8px;
+      color: hsl(166, 100%, 37%);
+    }
+    .visual{
+      background-color: rgba(17, 37, 212,0.1);
+      border-radius: 8px;
+      color: hsl(234, 85%, 45%);
+    }
+    .summary button {
+      justify-content: center;
+      background-color: hsl(224, 30%, 27%);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      margin-top: 25px;
+    }
+    .score {
+      color: hsl(224, 30%, 27%);
+      font-weight: 700;
+    }
+    .score::after{
+      content: " / 100";
+      opacity: 0.5;
+    }
+    .summary svg {
+      position: relative;
+      right: 8px;
+      top: 4px;
+    }
+    /* desktop */
+    @media (min-width: 376px){
+      .content {
+        flex-direction: row;
+        margin: auto;
+        height: 420px;
+        width: 600px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 5px 5px 20px hsl(221, 100%, 96%);
+      }
+      .result{
+        width: 50%;
+        height: 100%;
+        border-radius: 30px;
+      }
+      .overall {
+        width: 150px;
+        height: 150px;
+      }
+      .overall p {
+        top: 25px;
+      }
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="content col-5">
+      <div class="result col-6">
+        <div class="title">Your Result</div>
+        <div class="overall"><p class="col-4">76</p></div>
+        <div class="rate">Great</div>
+        <div class="info">You scored higher than 65% of the people who have taken these tests.</div>
+      </div>
+      <div class="summary col-6">
+        <div class="summary-title">Summary</div>
+        <div class="reaction"><span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path stroke="#F55" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M10.833 8.333V2.5l-6.666 9.167h5V17.5l6.666-9.167h-5Z"/></svg>Reaction</span><span class="score">80</span></div>
+        <div class="memory"><span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path stroke="#FFB21E" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M5.833 11.667a2.5 2.5 0 1 0 .834 4.858"/><path stroke="#FFB21E" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M3.553 13.004a3.333 3.333 0 0 1-.728-5.53m.025-.067a2.083 2.083 0 0 1 2.983-2.824m.199.054A2.083 2.083 0 1 1 10 3.75v12.917a1.667 1.667 0 0 1-3.333 0M10 5.833a2.5 2.5 0 0 0 2.5 2.5m1.667 3.334a2.5 2.5 0 1 1-.834 4.858"/><path stroke="#FFB21E" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M16.447 13.004a3.334 3.334 0 0 0 .728-5.53m-.025-.067a2.083 2.083 0 0 0-2.983-2.824M10 3.75a2.085 2.085 0 0 1 2.538-2.033 2.084 2.084 0 0 1 1.43 2.92m-.635 12.03a1.667 1.667 0 0 1-3.333 0"/></svg>Memory</span><span class="score">92</span></div>
+        <div class="verbal"><span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path stroke="#00BB8F" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M7.5 10h5M10 18.333A8.333 8.333 0 1 0 1.667 10c0 1.518.406 2.942 1.115 4.167l-.699 3.75 3.75-.699A8.295 8.295 0 0 0 10 18.333Z"/></svg>Verbal</span><span class="score">61</span></div>
+        <div class="visual"><span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path stroke="#1125D6" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M10 11.667a1.667 1.667 0 1 0 0-3.334 1.667 1.667 0 0 0 0 3.334Z"/><path stroke="#1125D6" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M17.5 10c-1.574 2.492-4.402 5-7.5 5s-5.926-2.508-7.5-5C4.416 7.632 6.66 5 10 5s5.584 2.632 7.5 5Z"/></svg>Visual</span><span class="score">72</span></div>
+        <button>Continue</button>
+      </div>
+  </div>
+</body>
+</html>
